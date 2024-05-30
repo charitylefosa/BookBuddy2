@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookBuddy</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- Include Google Books API -->
+  <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+</head>
+<body>
+  <header>
+    <h1>BookBuddy</h1>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Search for books...">
+      <button id="search-button">Search</button>
+    </div>
+  </header>
+  <main>
+    <div id="search-results" class="results-container"></div>
+    <div id="viewerCanvas" style="width: 600px; height: 500px; margin-top: 20px;"></div>
+  </main>
+  <!-- Include Axios for HTTP requests -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Include app.js -->
+  <script src="src/app.js"></script>
+</body>
+</html>
+

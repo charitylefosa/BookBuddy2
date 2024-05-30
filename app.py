@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask import render_template
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
@@ -23,20 +24,22 @@ class Book(db.Model):
     author = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(50), nullable=False)
 
+from flask import render_template
+
 @app.route('/')
 def home():
-    print("Home route accessed")
-    return jsonify(message="Welcome to BookBuddy!")
+    return render_template('welcome.html')
 
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    print(f"Registering user: {data}")
-    hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-    new_user = User(username=data['username'], password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify(message="User registered successfully!")
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    if query:
+        # Perform search based on query
+        # For now, let's assume we have search functionality implemented
+        books = [...]  # Your search results here
+    else:
+        books = None
+    return render_template('search.html', books=books)
 
 @app.route('/login', methods=['POST'])
 def login():

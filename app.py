@@ -1,14 +1,8 @@
 from flask import Flask, jsonify, request
-<<<<<<< HEAD
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask import render_template
-=======
 from flask_sqlalchemy import SQLAlchemy  # SQLAlchemy for ORM
 from flask_bcrypt import Bcrypt  # Bcrypt for hashing passwords
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity  # JWT for authentication
->>>>>>> 9381b34025beebf4c5d19858c3b35927545cffdf
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -34,17 +28,11 @@ class Book(db.Model):
     author = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(50), nullable=False)
 
-<<<<<<< HEAD
-from flask import render_template
-
-=======
 # Home route, returns a welcome message
->>>>>>> 9381b34025beebf4c5d19858c3b35927545cffdf
 @app.route('/')
 def home():
     return render_template('welcome.html')
 
-<<<<<<< HEAD
 @app.route('/search')
 def search():
     query = request.args.get('query')
@@ -55,7 +43,7 @@ def search():
     else:
         books = None
     return render_template('search.html', books=books)
-=======
+
 # Route for user registration
 @app.route('/register', methods=['POST'])
 def register():
@@ -66,7 +54,6 @@ def register():
     db.session.add(new_user)  # Add new user to the database
     db.session.commit()  # Commit changes to the database
     return jsonify(message="User registered successfully!")  # Return success message
->>>>>>> 9381b34025beebf4c5d19858c3b35927545cffdf
 
 # Route for user login
 @app.route('/login', methods=['POST'])

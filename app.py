@@ -37,9 +37,12 @@ def home():
 def search():
     query = request.args.get('query')
     if query:
-        # Perform search based on query
-        # For now, let's assume we have search functionality implemented
-        books = [...]  # Your search results here
+        # Fetch book details from Google Books API
+        response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={query}')
+        if response.status_code == 200:
+            books = response.json().get('items', [])
+        else:
+            books = []
     else:
         books = None
     return render_template('search.html', books=books)
